@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Quiz Time!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4; /* Light grey background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #b39ddb; /* Light purple */
+            color: white;
+            padding: 50px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3.8em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .intro {
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.8;
+            padding: 0 15px;
+        }
+
+        .intro h2 {
+            font-size: 2.5em;
+            color: #7e57c2; /* A slightly darker purple */
+            margin-bottom: 10px;
+        }
+
+        .questions-container {
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: left;
+            font-size: 1.2em;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question label {
+            margin-left: 10px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .question input {
+            margin-right: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 40px;
+            background-color: #9575cd; /* Soft purple button */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.4em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #7e57c2; /* Darker purple on hover */
+            transform: translateY(-3px); /* Lift effect */
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #e1bee7; /* Light purple footer */
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3em;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Birthday Quiz Time!</h1>
+    </header>
+
+    <div class="intro">
+        <h2>Let's see how well you know the bday boy!</h2>
+        <p>Get them wrong at your own risk!</p>
+    </div>
+
+    <div class="questions-container">
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Whats his favorite color?(hint peep the theme)</p>
+            <label><input type="radio" name="q1" value="Blue"> Blue</label>
+            <label><input type="radio" name="q1" value="Red"> Red</label>
+            <label><input type="radio" name="q1" value="Green"> Green</label>
+            <label><input type="radio" name="q1" value="Purple" id="q1-correct"> Purple </label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. His recent sport obession ?</p>
+            <label><input type="radio" name="q2" value="Pizza"> Golf</label>
+            <label><input type="radio" name="q2" value="Cake" id="q2-correct"> Basket ball </label>
+            <label><input type="radio" name="q2" value="Sandwiches"> Netball</label>
+            <label><input type="radio" name="q2" value="Ice Cream"> Cricket</label>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. His go to artist?</p>
+            <label><input type="radio" name="q3" value="Lil Baby"> Drake,Kodack Black,Ariana Grande and Rihanna</label>
+            <label><input type="radio" name="q3" value="Mountains"> Lil Wayne,Selena Gomez,Beyomce and Tory Lanez</label>
+            <label><input type="radio" name="q3" value="Amusement Park" id="q3-correct">  Lil Baby,RKelly,Trey Songz and Lauren Hill</label>
+            <label><input type="radio" name="q3" value="Home"> Lil Tjay,Nicki Minaj,Jay-Z and Taylor smith</label>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. His favvvv person?</p>
+            <label><input type="radio" name="q4" value="Zakiya"> Zakiya</label>
+            <label><input type="radio" name="q4" value="Zaki"> Zaki</label>
+            <label><input type="radio" name="q4" value="Zakiya Osman"> Zakiya Osman</label>
+            <label><input type="radio" name="q4" value="ALL ABOVE" id="q4-correct"> ALL ABOVE </label>
+        </div>
+       
+
+        <button onclick="submitQuiz()" class="button">Submit Answers</button> <!-- Button to submit the quiz -->
+        
+        <div class="result" id="result"></div> <!-- Result will show here -->
+    </div>
+
+    <footer>
+        <a href="page2.html" class="button">One more chance</a> 
+        <a href="page3.html" class="button">Lets move on</a>
+    </footer>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = 4;
+
+            // Check each question for the correct answer
+            if (document.querySelector('input[name="q1"]:checked') && document.querySelector('input[name="q1"]:checked').value === "Purple") {
+                score++;
+            }
+            if (document.querySelector('input[name="q2"]:checked') && document.querySelector('input[name="q2"]:checked').value === "Cake") {
+                score++;
+            }
+            if (document.querySelector('input[name="q3"]:checked') && document.querySelector('input[name="q3"]:checked').value === "Amusement Park") {
+                score++;
+            }
+            if (document.querySelector('input[name="q4"]:checked') && document.querySelector('input[name="q4"]:checked').value === "ALL ABOVE") {
+                score++;
+            }
+
+            // Display result
+            let resultText = `You got ${score} out of ${totalQuestions} correct!`;
+
+            if (score === totalQuestions) {
+                resultText += " 🎉 EYYYYY YOU KNOW YOUR SHIT!";
+            } else if (score > 0) {
+                resultText += " CHELSEA CMON NOWWWW,try againnnn";
+            } else {
+                resultText += " Uh-oh, BOOO ";
+            }
+
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
